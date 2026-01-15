@@ -29,7 +29,9 @@ open class NavigatorHost : NavHostFragment(), FragmentOnAttachListener {
         navigator = Navigator(this, configuration, activity)
         childFragmentManager.addFragmentOnAttachListener(this)
 
-        initControllerGraph()
+        if (!Hotwire.config.lazyLoadTabs) {
+            initControllerGraph()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

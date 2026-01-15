@@ -56,5 +56,6 @@ class DemoApplication : Application() {
         Hotwire.config.webViewDebuggingEnabled = BuildConfig.DEBUG
         Hotwire.config.jsonConverter = KotlinXJsonConverter()
         Hotwire.config.applicationUserAgentPrefix = "Hotwire Demo;"
+        Hotwire.config.lazyLoadTabs = true
     }
 }

@@ -90,6 +90,8 @@ class HotwireConfig internal constructor() {
         ).filterNotNull().joinToString(" ")
     }
 
+    var lazyLoadTabs = false
+
     /**
      * Gets the full user agent that is used for every WebView instance. This includes:
      * - Your (optional) custom `applicationUserAgentPrefix`

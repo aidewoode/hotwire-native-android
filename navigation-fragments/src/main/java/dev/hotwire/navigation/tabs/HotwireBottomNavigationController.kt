@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.FragmentNavigator
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.hotwire.core.config.Hotwire
 import dev.hotwire.core.turbo.nav.PresentationContext
 import dev.hotwire.core.turbo.visit.VisitOptions
 import dev.hotwire.navigation.activities.HotwireActivity
@@ -225,6 +226,10 @@ class HotwireBottomNavigationController(
         tabs.forEach {
             val navigatorHostView = activity.findViewById<View>(it.configuration.navigatorHostId)
             navigatorHostView?.isVisible = it == tab
+
+            if (it == tab && !it.navigatorHost.isReady() && Hotwire.config.lazyLoadTabs) {
+                it.navigatorHost.initControllerGraph()
+            }
         }
     }
 
